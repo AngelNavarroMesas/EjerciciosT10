@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class Utils {
 	
-	public static int readInt() {
-		Scanner sc = new Scanner(System.in);
+	public static int readInt(Scanner sc) {
 		int i=0;
 		try {
 			System.out.println("Introduzca un numero");
@@ -17,11 +16,11 @@ public class Utils {
 		return i;
 	}
 	
-	public static double readDouble() {
-		Scanner sc = new Scanner(System.in);
+	public static double readDouble(Scanner sc) {
 		double x=0;
 		try {
 			System.out.println("Introduzca un numero");
+			sc.nextLine();
 			x = sc.nextDouble();
 		}catch(InputMismatchException e) {
 			System.out.println("El valor introducido no es de tipo double");
