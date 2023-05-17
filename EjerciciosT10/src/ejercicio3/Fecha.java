@@ -27,8 +27,10 @@ public class Fecha {
 		return mes;
 	}
 
-	public void setMes(int mes) {
-		this.mes = mes;
+	public void setMes(int mes) throws mesException {
+		if(mes<13){
+			this.mes = mes;
+		}else throw new mesException();
 	}
 
 	public int getAño() {
@@ -49,19 +51,19 @@ public class Fecha {
 		return bisiesto;
 	}
 	
-	public boolean fechaCorrecta() {
+	public boolean fechaCorrecta() throws diaException{
 		boolean correcto = false;
 		
 		if(dia<=30&&mes!=2&&mes<=12||dia<=28&&mes==2) {
 			correcto = true;
 		}else if(esBisiesto()==true&&dia==29&&mes==2) {
 			correcto = true;
-		}
+		}else throw new diaException();
 		
 		return correcto;
 	}
 	
-	public void diaSiguiente() {
+	public void diaSiguiente() throws diaException {
 		
 		if(dia<30&&fechaCorrecta()==true) {
 			dia++;
